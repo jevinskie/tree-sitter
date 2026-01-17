@@ -138,3 +138,7 @@ void ts_tree_print_dot_graph(const TSTree *self, int file_descriptor) {
 }
 
 #endif
+
+void ts_tree_print_dot_graph_stream(const TSTree *self, FILE *file_handle) {
+  ts_subtree_print_dot_graph(self->root, self->language, file_handle);
+}

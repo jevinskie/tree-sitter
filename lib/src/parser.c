@@ -2032,6 +2032,10 @@ void ts_parser_print_dot_graphs(TSParser *self, int fd) {
   }
 }
 
+void ts_parser_print_dot_graphs_stream(TSParser *self, FILE *file_handle) {
+  self->dot_graph_file = file_handle;
+}
+
 bool ts_parser_set_included_ranges(
   TSParser *self,
   const TSRange *ranges,

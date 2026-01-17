@@ -9,6 +9,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdbool.h>
 
 #ifdef __cplusplus
@@ -386,6 +387,7 @@ TSLogger ts_parser_logger(const TSParser *self);
  * SVG output. You can turn off this logging by passing a negative number.
  */
 void ts_parser_print_dot_graphs(TSParser *self, int fd);
+void ts_parser_print_dot_graphs_stream(TSParser *self, FILE *file_handle);
 
 /******************/
 /* Section - Tree */
@@ -471,6 +473,7 @@ TSRange *ts_tree_get_changed_ranges(
  * Write a DOT graph describing the syntax tree to the given file.
  */
 void ts_tree_print_dot_graph(const TSTree *self, int file_descriptor);
+void ts_tree_print_dot_graph_stream(const TSTree *self, FILE *file_handle);
 
 /******************/
 /* Section - Node */
