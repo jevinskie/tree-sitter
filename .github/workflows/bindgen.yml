@@ -1,6 +1,7 @@
 name: Check Bindgen Output
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - lib/include/tree_sitter/api.h
