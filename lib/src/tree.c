@@ -110,8 +110,8 @@ int _ts_dup(HANDLE handle) {
   return _open_osfhandle((intptr_t)dup_handle, 0);
 }
 
-void ts_tree_print_dot_graph(const TSTree *self, int fd) {
-  FILE *file = _fdopen(_ts_dup((HANDLE)_get_osfhandle(fd)), "a");
+void ts_tree_print_dot_graph(const TSTree *self, int file_descriptor) {
+  FILE *file = _fdopen(_ts_dup((HANDLE)_get_osfhandle(file_descriptor)), "a");
   ts_subtree_print_dot_graph(self->root, self->language, file);
   fclose(file);
 }

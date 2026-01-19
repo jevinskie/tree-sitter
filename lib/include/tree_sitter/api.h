@@ -386,7 +386,15 @@ TSLogger ts_parser_logger(const TSParser *self);
  * to pipe these graphs directly to a `dot(1)` process in order to generate
  * SVG output. You can turn off this logging by passing a negative number.
  */
-void ts_parser_print_dot_graphs(TSParser *self, int fd);
+void ts_parser_print_dot_graphs(TSParser *self, int file_descriptor);
+
+/**
+ * Set the file handle to which the parser should write debugging graphs
+ * during parsing. The graphs are formatted in the DOT language. This is an
+ * alternative to [`ts_parser_print_dot_graphs`] that takes a stdio `FILE*`.
+ * The caller is responsible for opening and closing the file handle.
+ * You can turn off this logging by passing a `NULL` file handle.
+ */
 void ts_parser_print_dot_graphs_stream(TSParser *self, FILE *file_handle);
 
 /******************/
@@ -470,9 +478,16 @@ TSRange *ts_tree_get_changed_ranges(
 );
 
 /**
- * Write a DOT graph describing the syntax tree to the given file.
+ * Write a DOT graph describing the syntax tree to the given file descriptor.
  */
 void ts_tree_print_dot_graph(const TSTree *self, int file_descriptor);
+
+ /**
+ * Write a DOT graph describing the syntax tree to the given file handle.
+ * This is an alternative to [`ts_tree_print_dot_graph`] that takes a
+ * stdio `FILE*`. The caller is responsible for opening and closing the
+ * file handle.
+ */
 void ts_tree_print_dot_graph_stream(const TSTree *self, FILE *file_handle);
 
 /******************/

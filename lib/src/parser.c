@@ -2016,16 +2016,16 @@ void ts_parser_set_logger(TSParser *self, TSLogger logger) {
   self->lexer.logger = logger;
 }
 
-void ts_parser_print_dot_graphs(TSParser *self, int fd) {
+void ts_parser_print_dot_graphs(TSParser *self, int file_descriptor) {
   if (self->dot_graph_file) {
     fclose(self->dot_graph_file);
   }
 
-  if (fd >= 0) {
+  if (file_descriptor >= 0) {
     #ifdef _WIN32
-    self->dot_graph_file = _fdopen(fd, "a");
+    self->dot_graph_file = _fdopen(file_descriptor, "a");
     #else
-    self->dot_graph_file = fdopen(fd, "a");
+    self->dot_graph_file = fdopen(file_descriptor, "a");
     #endif
   } else {
     self->dot_graph_file = NULL;
